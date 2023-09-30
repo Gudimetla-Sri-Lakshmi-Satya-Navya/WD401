@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        .login-wrap {
+            background-color: #fff;
+            width: 300px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px #000;
+        }
+    
+        .label {
+            font-weight: bold;
+        }
+    
+        .group {
+            margin-bottom: 20px;
+        }
+    
+        .input {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    
+        .button:hover {
+            background-color: #0056b3;
+        }
+    
+        .hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 20px 0;
+        }
+    
+        .foot-lnk {
+            text-align: center;
+        }
+    
+        .foot-lnk a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    
+        #alreadymember {
+            display: none;
+            margin-top: 10px;
+        }
+    
+        #tab-1:checked~#alreadymember {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form class="login-wrap" action="/signupsubmit" method="post" name="form">
+        <div class="sign-up-htm">
+            <div class="group">
+                <label for="user" class="label" >Username</label>
+                <input id="user" type="text" class="input" name="Username">
+            </div>
+            <div class="group">
+                <label for="pass" class="label" name="EmailAddress">Email Address</label>
+                <input id="pass" type="text" class="input" name="EmailAddress">            </div>
+            <div class="group">
+                <label for="pass" class="label" name="Password">Password</label>
+                <input id="pass" type="password" class="input" data-type="password" name="Password">            </div>
+            <div class="group">
+                <label for="pass" class="label" name="RepeatPassword">Repeat Password</label>
+                <input id="pass" type="password" class="input" data-type="password" name="RepeatPassword">
+            </div>
+            <div class="group">
+                <input type="submit" class="button" value="Sign Up">
+            </div>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+                <a href="#alreadymember" id="tab-1">Already Member?</a>
+                <div id="alreadymember">
+                    <a href="signin" class="login-button">Sign in</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+    <script>
+        document.getElementById('tab-1').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default behavior of the link
+                var alreadymemberDiv = document.getElementById('alreadymember');
+                alreadymemberDiv.style.display = (alreadymemberDiv.style.display === 'none') ? 'block' : 'none';
+            });
+    </script>
+</html>

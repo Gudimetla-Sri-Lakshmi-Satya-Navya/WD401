@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Reset some default styles */
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        h2{
+            text-align: center;
+            margin: 1%;
+            padding: 1%;
+            font-weight:900;
+            font-size: 40px;
+        }
+        h3{
+            float: left;
+            margin: 1%;
+            margin-left: 8%;
+            padding: 1%;
+            font-weight:700;
+        }
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        #about p, 
+        #category p, 
+        #menu p {
+            margin: 2%;
+            padding: 1%;
+            font-size: 20px;
+            color: #656565eb;
+            font-family: monospace;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: block;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+        .login-button,
+        .cta-button {
+            background-color: #f98256;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        #home{
+            background: 
+                url("https://img.freepik.com/premium-photo/background-cooking-black-wooden-background-top-view-free-space-your-text_187166-5650.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .food-types{
+            background: 
+                url("https://tastesbetterfromscratch.com/wp-content/uploads/2022/10/3Course-Hero-1.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 500px;
+            width: 100%;
+        }
+        /* Hero section styles */
+        .hero {
+            color: #faf8f8;
+            padding: 100px 0;
+            text-align: center;
+            width: 100%;
+            position: relative; 
+            text-align: center;
+        }
+
+        .welcome-message {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            background-color: #f97d50;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 700px) {
+            header {
+                padding: 10px 0;
+            }
+
+            nav ul {
+                display: none ;
+            }
+
+            .menu-icon {
+                position: absolute;
+                display: block;
+                margin-top: -8%;
+                margin-left: 2%;
+                padding: 0.5%;
+                cursor: pointer;
+                font-size: 24px;
+            }
+            #nav-ul {
+                background-color: #050504a1;
+                position: absolute;
+                margin-top: 2%;
+                z-index: 9;
+            }
+            nav ul.show {
+                display: block; /* Display the menu on smaller screens when toggled */
+                text-align: center;
+                width:110px; /* adjust */
+                height:auto; /* adjust */
+                padding: 10px;
+                position: fixed;
+                margin: 50px 0; 
+                line-height: 30px;
+            }
+            .login-button {
+                margin: 0px;
+                padding: 0px;
+                cursor: pointer;
+            }
+        }
+        /* Contact Us Section Styles */
+        #contact {
+            background-color: #fbfafa;
+            padding: 40px 0;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-img img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .form-container {
+            background-color: #e4d2cb;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            margin-left: 20px; /* Add some spacing between the image and form */
+        }
+
+        .form-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #f57a4d;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #d13200;
+        }
+        /* Food Menu Section */
+        #food-menu {
+            background-color: #f5f5f5;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .food-menu-heading {
+            font-size: 32px;
+            color: #080808;
+            margin-bottom: 20px;
+        }
+
+        .food-menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .food-menu-item {
+            background-color: #c7c1c1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .food-menu-item:hover {
+            transform: scale(1.05);
+        }
+
+        .food-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .food-title {
+            font-size: 24px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .food-description p {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+    <title>Restaurant Website</title>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Slice of Spice</h1>
+        <nav>
+            <div id="menu-toggle" class="menu-icon" on click="toggleMenu()" >&#9776;</div> 
+            <ul id="nav-ul" >
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#category">Category</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="signup" class="login-button">Sign up</a></li>   
+            </ul>
+        </nav>
+    </header>
+
+
+    <section id="home">
+        <div class="hero">
+            <div class="welcome-message">
+                <p id="welcome-message"></p>
+            </div>
+            <h2>Delicious Dishes with right choice</h2>
+            <p>Experience the finest culinary delights.</p><br>
+            <a href="#menu" class="cta-button">View Menu</a>
+        </div>
+    </section>
+    <section id="about">
+        <h2>About Us</h2>
+        <p style="font-size: 30px;font-weight: 400;">We've been making healthy food for last 1O years.</p><br><p style="margin-top: -3%;">At Restaurant Name, we are passionate about delivering a unique dining experience that transcends the ordinary. With
+        over a decade of culinary excellence, we have been dedicated to crafting memorable moments for our valued patrons. Our
+        journey is built on a foundation of quality, innovation, and a deep appreciation for the art of food. Our talented chefs
+        source the finest ingredients, transforming them into delectable dishes that celebrate flavors from around the world.
+        Whether you're here for a special occasion or a casual dining experience, we invite you to savor the fusion of flavors,
+        warm hospitality, and a welcoming ambiance that defines us. Join us in celebrating the love for great food, and let us
+        take you on a gastronomic adventure you won't forget.</p>
+    </section>
+    <hr>
+    <section id="category">
+        <h2>Food Categories</h2>
+        <p>You can have the type of food you want!!</p>
+        <div class="food-types"></div>
+        <div class="category-list">
+            <div class="category">
+                <h3><u>Soups:</u></h3><br><br>
+                <p>Indulge your taste buds with our exquisite selection of soups that are crafted to perfection. Our soups are a delightful
+                blend of fresh, hand-picked ingredients and expertly crafted flavors that will warm your soul. Whether you're a fan of
+                classic comfort soups like creamy tomato or crave the bold and hearty flavors of chicken noodle, our soup menu offers a
+                variety of choices to satisfy your cravings. Each bowl is a symphony of taste, prepared with care to ensure a memorable
+                dining experience. Join us and savor the comfort and warmth of our soups, a true delight for any season.</p>
+            </div>
+            <div class="category">
+                <h3><u>Starters:</u></h3><br><br>
+                <p>Begin your culinary journey with our tantalizing range of starters. Our carefully curated selection offers a delightful
+                assortment of flavors and textures to awaken your palate. From crispy spring rolls that burst with freshness to
+                succulent chicken wings coated in our signature sauces, our starters are designed to ignite your appetite. Whether
+                you're sharing with friends or savoring them as the perfect prelude to your meal, each dish is a testament to our
+                commitment to quality and taste. Join us in exploring the world of starters, where every bite is a delightful adventure
+                in flavor.</p>
+            </div>
+            <div class="category">
+                <h3><u>Main Courses(Veg):</u></h3><br><br>
+                <p>Savor the goodness of nature with our delectable vegetarian main courses. Our chefs have masterfully crafted a diverse
+                array of vegetarian dishes that celebrate the richness of fresh produce and bold flavors. From creamy pasta dishes
+                adorned with garden-fresh vegetables to aromatic curries that tantalize your taste buds, our vegetarian main course
+                options offer something for every discerning palate. Each dish is a harmonious blend of textures and spices, prepared
+                with care to ensure a memorable dining experience. Join us in a culinary exploration of vegetarian delights that prove
+                you don't need meat to enjoy a hearty and satisfying meal.</p>
+            </div>
+            <div class="category">
+                <h3><u>Main Courses(Non-Veg):</u></h3><br><br>
+                <p>Discover our mouthwatering main course dishes, cooked to perfection.Indulge in the irresistible flavors of our non-vegetarian main courses, where culinary expertise meets the finest
+                ingredients. Our chefs have curated a menu that showcases the essence of meaty goodness, from succulent steaks grilled
+                to perfection to aromatic and spicy curries that will transport your taste buds on a flavorful journey. Each dish is a
+                testament to our commitment to providing a diverse and satisfying dining experience. We source the highest quality meats
+                and ingredients to ensure that every bite is a moment of culinary delight. Join us for a carnivorous adventure and
+                discover why our non-vegetarian main courses are a favorite among food enthusiasts.</p>
+            </div>
+            <div class="category">
+                <h3><u>Desserts:</u></h3><br><br>
+                <p>Indulge your sweet tooth with our heavenly selection of desserts. Our desserts are more than just the perfect ending to
+                your meal; they're a delightful experience in themselves. From classic favorites like rich and creamy cheesecakes to
+                innovative creations that combine unexpected flavors and textures, our dessert menu is a sweet symphony that will
+                satisfy every craving. Our talented pastry chefs use the finest ingredients to craft these delectable treats, ensuring
+                that each bite is a moment of pure bliss. Whether you're a fan of chocolatey delights, fruity sensations, or something
+                in between, there's a dessert here to tantalize your taste buds. Join us for a divine dessert experience that will leave
+                you craving for more.</p>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section id="food-menu">
+        <h2 class="food-menu-heading">Food Menu</h2>
+        <div class="food-menu-container container">
+            <div class="food-menu-item">
+                <div class="food-img">
+                    <img src="https://assets.bonappetit.com/photos/5e31fc9a461d010008e1e976/1:1/w_2560%2Cc_limit/Basically-Lemony-Chicken-Orzo-Soup.jpg" alt="" />
+                </div>
+                <div class="food-description">
+                    <h2 class="food-titile">Chicken Soup</h2>
+                    <p>Chicken soup: A comforting and hearty classic, loved for its rich, savory broth and tender pieces of chicken.</p>
+                    <p id="food-price" style="font-size: 18px;color: #ff4500;margin-top: 10px;">Price: &#8377; 250</p>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-img">
+                    <img src="https://media.istockphoto.com/id/174855799/photo/vegetable-soup.jpg?s=612x612&w=0&k=20&c=xN716RE3GFk6CQgdRr6lC5GZnWV95WHt0My5JXvkBUY=" alt="error" />
+                </div>
+                <div class="food-description">
+                    <h2 class="food-titile">Veggie Soup</h2>
+                    <p>Vegetable soup: A wholesome blend of fresh vegetables in a flavorful broth, perfect for a nutritious and satisfying meal.</p>
+                    <p class="food-price" style="font-size: 18px;color: #ff4500;margin-top: 10px;">Price: &#8377; 250</p>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-img">
+                    <img src="https://img.freepik.com/premium-photo/fish-cakes-fish-balls-with-tuna-spinach-plate-isolated-white-background_89816-45142.jpg?w=2000" alt="" />
+                </div>
+                <div class="food-description">
+                    <h2 class="food-titile">Veg Balls</h2>
+                    <p>Veg Balls: Delicious and crispy vegetarian bites made from a mix of finely chopped vegetables, herbs, and spices.</p>
+                    <p class="food-price" style="font-size: 18px;color: #ff4500;margin-top: 10px;">Price: &#8377; 250</p>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-img">
+                    <img src="https://static.toiimg.com/photo/53240689.cms" alt="" />
+                </div>
+                <div class="food-description">
+                    <h2 class="food-titile">Tandoori Chicken</h2>
+                    <p>Tandoori Chicken: A succulent Indian dish featuring marinated chicken cooked in a clay oven, known for its smoky flavor and tender texture.</p>
+                    <p class="food-price" style="font-size: 18px;color: #ff4500;margin-top: 10px;">Price: &#8377; 250</p>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-img">
+                    <img src="https://s3.us-west-2.amazonaws.com/www.gethomesome.com/productimages/st-indochinese-veg-fried-rice.jpg" alt="" />
+                </div>
+                <div class="food-description">
+                    <h2 class="food-titile">Vegetable Biriyani</h2>
+                    <p>Vegetable Biryani: A fragrant and flavorful Indian rice dish cooked with a blend of aromatic spices and mixed vegetables, creating a delightful and satisfying vegetarian meal.</p>
+                    <p class="food-price" style="font-size: 18px;color: #ff4500;margin-top: 10px;">Price: &#8377; 250</p>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-img">
+                    <img src="https://previews.123rf.com/images/kravtzov/kravtzov1908/kravtzov190800055/128824164-chicken-kabsa-or-chicken-biryani-at-white-wooden-background-kabsa-is-traditional-saudi-arabian.jpg" alt="" />
+                </div>
+                <div class="food-description">
+                    <h2 class="food-titile">Chicken Biriyani</h2>
+                    <p>Chicken Biryani: A classic Indian dish featuring succulent chicken pieces marinated with spices, layered with fragrant rice, and slow-cooked to perfection for a mouthwatering culinary experience.</p>
+                    <p class="food-price" style="font-size: 18px;color: #ff4500;margin-top: 10px;">Price: &#8377; 250</p>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-img">
+                    <img src="https://prcdn.freetls.fastly.net/release_image/7269/232/7269-232-d8dffaff60530d0f74a15d61cd8cbdfe-1800x1200.jpg?format=jpeg&auto=webp&quality=85%2C65&width=1950&height=1350&fit=bounds" alt="" />
+                </div>
+                <div class="food-description">
+                    <h2 class="food-titile">Waffle Bowl</h2>
+                    <p>Waffle Bowl: A delightful edible bowl made of crispy, golden waffle batter, perfect for holding ice cream, toppings, and sweet treats.</p>
+                    <p class="food-price" style="font-size: 18px;color: #ff4500;margin-top: 10px;">Price: &#8377; 250</p>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_Mt1NuilaS_ASie-z1lzFXCg6NkfzxVuMKaYMZYMbamfo3fPwFU8ZfcuTjAfJsW4TLWU&usqp=CAU" alt="" />
+                </div>
+                <div class="food-description">
+                    <h2 class="food-titile">Molten Lava Cake</h2>
+                    <p>Molten Lava Cake: A decadent dessert known for its warm, gooey chocolate center that oozes out when you dig in, creating a blissful chocolatey eruption.</p>
+                    <p class="food-price" style="font-size: 18px;color: #ff4500;margin-top: 10px;">Price: &#8377; 250</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container container">
+            <div class="contact-img">
+                <img src="https://vegchennaisrilalitha.co.uk/wp-content/uploads/2021/07/contact-us.png" alt="">
+            </div>
+            <div class="form-container">
+                <input type="text" placeholder="Your Name" />
+                <input type="email" placeholder="E-Mail" />
+                <textarea cols="30" rows="6" placeholder="Type Your Message"></textarea>
+                <a href="#" class="btn btn-primary">Submit</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>Slice of Spice &copy; all rights reserved</p>
+    </footer>
+</body>
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const navUl = document.getElementById("nav-ul");
+
+        menuToggle.addEventListener("click", () => {
+            navUl.classList.toggle("show");
+        });
+        // Assuming you have stored the username in a session or cookie
+        const loggedInUsername = '<%= loggedInUsername %>';/* retrieve the username from session or cookie */;
+
+            // Check if a user is logged in
+        if (loggedInUsername) {
+                // User is logged in, display their username
+            const welcomeMessage = document.getElementById("welcome-message");
+            welcomeMessage.textContent = `Welcome,${loggedInUsername}!`;
+        }
+    </script>
+</html>
